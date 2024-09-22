@@ -73,7 +73,6 @@ class LogoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Navigate to LoginPage after a delay
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const LoginPage()),
@@ -85,7 +84,7 @@ class LogoPage extends StatelessWidget {
       body: SizedBox.expand(
         child: Image.asset(
           'assets/expenzlogo.jpg',
-          fit: BoxFit.cover, // This makes the image cover the entire page
+          fit: BoxFit.cover,
         ),
       ),
     );
@@ -118,42 +117,68 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextFormField(
-                controller: _emailController,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.email),
+              Theme(
+                data: Theme.of(context).copyWith(
+                  primaryColor: Colors.white,
                 ),
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your email';
-                  }
-                  if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}').hasMatch(value)) {
-                    return 'Enter a valid email';
-                  }
-                  return null;
-                },
+                child: TextFormField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    border: const OutlineInputBorder(),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white, width: 2.0),
+                    ),
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white, width: 1.0),
+                    ),
+                    prefixIcon: const Icon(Icons.email, color: Colors.white),
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                  style: const TextStyle(color: Colors.white),
+                  cursorColor: Colors.white,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your email';
+                    }
+                    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}').hasMatch(value)) {
+                      return 'Enter a valid email';
+                    }
+                    return null;
+                  },
+                ),
               ),
               const SizedBox(height: 16),
-              TextFormField(
-                controller: _passwordController,
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.lock),
+              Theme(
+                data: Theme.of(context).copyWith(
+                  primaryColor: Colors.white,
                 ),
-                obscureText: true,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your password';
-                  }
-                  if (value.length < 6) {
-                    return 'Password must be at least 6 characters long';
-                  }
-                  return null;
-                },
+                child: TextFormField(
+                  controller: _passwordController,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    border: const OutlineInputBorder(),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white, width: 2.0),
+                    ),
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white, width: 1.0),
+                    ),
+                    prefixIcon: const Icon(Icons.lock, color: Colors.white),
+                  ),
+                  obscureText: true,
+                  style: const TextStyle(color: Colors.white),
+                  cursorColor: Colors.white,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your password';
+                    }
+                    if (value.length < 6) {
+                      return 'Password must be at least 6 characters long';
+                    }
+                    return null;
+                  },
+                ),
               ),
               const SizedBox(height: 24),
               SizedBox(
@@ -166,7 +191,7 @@ class _LoginPageState extends State<LoginPage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => HomePage(
-                            userName: _emailController.text, // Replace this with the actual user name if available
+                            userName: _emailController.text, // Use email as username for now
                             userEmail: _emailController.text,
                           ),
                         ),
@@ -174,8 +199,8 @@ class _LoginPageState extends State<LoginPage> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white, // Button background color set to white
-                    foregroundColor: Colors.black, // Button text color set to black
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
                   ),
                   child: const Text('Login'),
                 ),
@@ -190,7 +215,7 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 child: const Text(
                   'Don\'t have an account? Sign Up',
-                  style: TextStyle(color: Colors.white), // Text color set to white
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ],
@@ -227,42 +252,68 @@ class _SignUpPageState extends State<SignUpPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextFormField(
-                controller: _emailController,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.email),
+              Theme(
+                data: Theme.of(context).copyWith(
+                  primaryColor: Colors.white,
                 ),
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your email';
-                  }
-                  if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}').hasMatch(value)) {
-                    return 'Enter a valid email';
-                  }
-                  return null;
-                },
+                child: TextFormField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    border: const OutlineInputBorder(),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white, width: 2.0),
+                    ),
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white, width: 1.0),
+                    ),
+                    prefixIcon: const Icon(Icons.email, color: Colors.white),
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                  style: const TextStyle(color: Colors.white),
+                  cursorColor: Colors.white,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your email';
+                    }
+                    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}').hasMatch(value)) {
+                      return 'Enter a valid email';
+                    }
+                    return null;
+                  },
+                ),
               ),
               const SizedBox(height: 16),
-              TextFormField(
-                controller: _passwordController,
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.lock),
+              Theme(
+                data: Theme.of(context).copyWith(
+                  primaryColor: Colors.white,
                 ),
-                obscureText: true,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your password';
-                  }
-                  if (value.length < 6) {
-                    return 'Password must be at least 6 characters long';
-                  }
-                  return null;
-                },
+                child: TextFormField(
+                  controller: _passwordController,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    border: const OutlineInputBorder(),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white, width: 2.0),
+                    ),
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white, width: 1.0),
+                    ),
+                    prefixIcon: const Icon(Icons.lock, color: Colors.white),
+                  ),
+                  obscureText: true,
+                  style: const TextStyle(color: Colors.white),
+                  cursorColor: Colors.white,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your password';
+                    }
+                    if (value.length < 6) {
+                      return 'Password must be at least 6 characters long';
+                    }
+                    return null;
+                  },
+                ),
               ),
               const SizedBox(height: 24),
               SizedBox(
@@ -275,7 +326,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => HomePage(
-                            userName: _emailController.text, // Replace this with the actual user name if available
+                            userName: _emailController.text, // Use email as username for now
                             userEmail: _emailController.text,
                           ),
                         ),
@@ -283,10 +334,20 @@ class _SignUpPageState extends State<SignUpPage> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white, // Button background color set to white
-                    foregroundColor: Colors.black, // Button text color set to black
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
                   ),
                   child: const Text('Sign Up'),
+                ),
+              ),
+              const SizedBox(height: 16),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context); // Go back to LoginPage
+                },
+                child: const Text(
+                  'Already have an account? Login',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ],

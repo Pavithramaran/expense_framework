@@ -140,18 +140,28 @@ class _NewExpenceState extends State<NewExpence> {
               Container(
                 margin: const EdgeInsets.only(left: 8),
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white, // Background color
+                    foregroundColor: Colors.black, // Text color
+                  ),
                   onPressed: () {
                     Navigator.pop(context);
                   },
                   child: const Text("Cancel"),
                 ),
+
               ),
               Container(
                 margin: const EdgeInsets.only(left: 6, right: 8),
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white, // Background color
+                    foregroundColor: Colors.black, // Text color
+                  ),
                   onPressed: _submitExpence,
                   child: const Text("Save"),
                 ),
+
               ),
             ],
           )

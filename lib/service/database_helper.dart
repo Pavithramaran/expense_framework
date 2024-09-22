@@ -15,21 +15,21 @@ class DatabaseHelper {
   }
 
   static Future<int> addExpense(ExpenceModel expenceModel) async {
-    final _db = await GetDatabase();
-    return await _db.insert("expenses", expenceModel.toJson(),
+    final db = await GetDatabase();
+    return await db.insert("expenses", expenceModel.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   static Future<int> deleteExpense(ExpenceModel expenceModel) async {
-    final _db = await GetDatabase();
-    return await _db
+    final db = await GetDatabase();
+    return await db
         .delete("expenses", where: 'id = ?', whereArgs: [expenceModel.id]);
   }
 
   static Future<List<ExpenceModel>?> getAllExpences() async {
-    final _db = await GetDatabase();
+    final db = await GetDatabase();
 
-    final List<Map<String, dynamic>> maps = await _db.query("expenses");
+    final List<Map<String, dynamic>> maps = await db.query("expenses");
 
     if (maps.isEmpty) {
       return null;

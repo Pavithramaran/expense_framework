@@ -3,6 +3,7 @@ import 'package:expences_tracker/widgets/new_expence.dart';
 import 'package:expences_tracker/model/expence_model.dart';
 import 'package:expences_tracker/widgets/chart/chart.dart';
 import 'package:intl/intl.dart';
+import '../main.dart';
 import '../service/database_helper.dart';
 import 'expences_item.dart';
 
@@ -161,20 +162,15 @@ class _ExpencesState extends State<Expences> {
               ],
             ),
             ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SettingsPage()),
-                );
-              },
-            ),
-            ListTile(
               leading: const Icon(Icons.logout),
               title: const Text('Logout'),
               onTap: () {
-                // Implement logout logic
+                // Implement logout logic (if needed)
+                // Navigate back to LoginPage
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                      (Route<dynamic> route) => false, // Removes all routes
+                );
               },
             ),
           ],
@@ -286,7 +282,7 @@ class ExpensesPage extends StatelessWidget {
 // Extension method to compare dates
 extension DateTimeComparison on DateTime {
   bool isSameDay(DateTime other) {
-    return this.year == other.year && this.month == other.month && this.day == other.day;
+    return year == other.year && month == other.month && day == other.day;
   }
 }
 
@@ -386,18 +382,4 @@ class _UserInfoPageState extends State<UserInfoPage> {
   }
 }
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Settings'),
-      ),
-      body: Center(
-        child: const Text('Settings Page Content Here'),
-      ),
-    );
-  }
-}
